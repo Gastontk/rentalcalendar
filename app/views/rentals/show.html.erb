@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <strong>Owner:</strong>
+  <%= @rental.user.email %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @rental.name %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @rental.start_time.strftime("%a, %b %d %Y ") %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @rental.end_time.strftime("%a, %b %d %Y ") %>
+</p>
+
+<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<%= link_to 'Back', rentals_path %> |
+<%= link_to 'Cancel Reservation', rental_path(@rental),  :method => 'delete' %>
+

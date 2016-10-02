@@ -1,0 +1,1 @@
+json.partial! "calendar_tests/calendar_test", calendar_test: @calendar_test

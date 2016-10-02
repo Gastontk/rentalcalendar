@@ -1,0 +1,44 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<style>
+	tr {
+		border:solids;
+	}
+	td {
+		border:solid;
+		padding:10px;
+
+	}
+</style>
+
+<h1><%=@user.name %>'s Rentals:</h1>
+<table style='border: solid;padding:30px;'>
+<% if @rentals.exists? %>
+		<%@rentals.each do |r| %>
+			<tr>
+				<th>Reservation:</th>
+
+				<th>Start Date: </th>
+				<th>End Date:</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td><%=r.name %></td>
+				<td><%= r.start_time.strftime("%a, %b %d %Y ") %></td>
+				<td><%= r.end_time.strftime("%a, %b %d %Y ") %> </td>
+				<td><%= link_to "Delete", rental_path(r), :method => 'delete' %></td>
+				<td><%= link_to "Change", edit_rental_path(r)%> </td>
+
+			</tr>
+
+
+
+
+
+		<% end %>
+	</table>
+<%else %>
+	<%= 'Nope, an error or no rentals.' %>
+<% end %>
+

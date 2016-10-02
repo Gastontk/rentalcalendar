@@ -1,0 +1,44 @@
+<style>
+  td {
+    border: 2px solid black;
+    padding: 10px;
+  }
+</style>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Rentals</h1>
+
+<table style='padding:20px;'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start time</th>
+      <th>End time</th>
+      <th colspan="3"></th>
+      <th> Rsv for:</th>
+    </tr>
+  </thead>
+
+  <tbody >
+    <% if @rentals %>
+        <% @rentals.each do |rental| %>
+          <tr style='padding:60px;'>
+            <td><%= rental.name %></td>
+            <td style='color:red;padding:3px;'><%= rental.start_time.strftime("%a, %b %d %Y ") %></td>
+            <td style='color:red;padding:3px;'><%= rental.end_time.strftime("%a, %b %d %Y ") %></td>
+            <td ><%= link_to 'Show', rental %></td>
+            <td><%= link_to 'Edit', edit_rental_path(rental) %></td>
+            <td><%= link_to 'Destroy', rental, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td ><%= link_to rental.user.name, user_path(rental.user) %></td>
+
+          </tr>
+        <% end %>
+      <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rental', new_rental_path %>

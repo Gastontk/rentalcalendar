@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+<style>
+  
+
+  .day{
+    background-color: linen;
+    border:solid .5px;
+  }
+  .simple-calendar{
+    /*border:solid 2px;*/
+    border-top:none;
+  }
+  .calendar-heading {
+    font_size: 50pt;
+    color: green;
+  }
+  .calendar-title{
+    font-size: 30px;
+  }
+  thead {
+    background-color: darkgrey;
+
+    border:solid;
+
+  }
+</style>
+
+<h1>Reservations Calendar</h1>
+
+------------ <h3>click a date to make a reservation</h3>-----------
+
+<table>
+
+
+  <tbody>
+    <% @calendar_tests.each do |calendar_test| %>
+      <tr>
+        <td><%= calendar_test.index %></td>
+        <td><%= link_to 'Show', calendar_test %></td>
+        <td><%= link_to 'Edit', edit_calendar_test_path(calendar_test) %></td>
+        <td><%= link_to 'Destroy', calendar_test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Reservation', new_rental_path %> <br> <br>
+
+
+
+
+
+
+<%= month_calendar events: @rentals do |date, rentals| %>
+    <%= link_to date.strftime("%d"), new_rental_path %>
+    <% rentals.each do |rental| %>
+      <div>
+        <h4><%=link_to rental.user.name, users_show_path(rental.user.id) %>: <%= link_to rental.name, rental_path(rental), style: 'color:red;' %></h4>
+      </div>
+    <% end %>
+
+<% end %>

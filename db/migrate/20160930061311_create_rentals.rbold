@@ -1,0 +1,8 @@
+class CreateRentals < ActiveRecord::Migration
+  def change
+
+     add_column :rentals, :end_time, :datetime
+
+
+  end
+end
