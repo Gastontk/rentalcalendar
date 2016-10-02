@@ -54,7 +54,7 @@
 
 
 <%= month_calendar events: @rentals do |date, rentals| %>
-    <%= link_to date.strftime("%d"), new_rental_path %>
+    <%= link_to date.strftime("%d"), new_rental_path(date) %>
     <% rentals.each do |rental| %>
       <div>
         <h4><%=link_to rental.user.name, users_show_path(rental.user.id) %>: <%= link_to rental.name, rental_path(rental), style: 'color:red;' %></h4>

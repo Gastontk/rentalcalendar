@@ -20,6 +20,9 @@ class RentalsController < ApplicationController
   def new
     # render plain: params
     @rental = Rental.new
+    @start_date = params[:format]
+    # render plain: @start_date
+
   end
 
   # GET /rentals/1/edit
@@ -31,6 +34,7 @@ class RentalsController < ApplicationController
   def create
     @rental = Rental.new(rental_params)
     @rental.user = current_user
+
     # render plain: @rental.user.email
 
       if @rental.save
